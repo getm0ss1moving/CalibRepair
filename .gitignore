@@ -1,0 +1,13 @@
+# run artifacts and inputs obtained from the contest package
+bench/
+upstream/
+logs/
+containers/
+*.tar.gz
+*.tgz
+*.sif
+runs/
+*.csv.bak
+.DS_Store
+__pycache__/
+*.py[cod]
