@@ -33,12 +33,12 @@ the top three teams on that design is 12 116 ns — less than one point.
 
 ## 1. What the winner's advantage is actually made of
 
-Scoring model, reverse-engineered from the workbook and validated:
+Partial scoring model, reconstructed from the workbook:
 `contribution = w × (m − pre)/|pre|` for TNS and `w × (pre − m)/|pre|` for the penalties;
 `design score = Σ contributions`; `total = Σ design_weight × design score`
-(ariane ×1.2, bsg_chip ×1.5, aes/jpeg ×1.0). Reproducing the Resizer row by row gives
-**1099.35** against the sheet's published **1107.55** — the 8.2 difference is the
-runtime/displacement terms, which I exclude here.
+(ariane ×1.2, bsg_chip ×1.5, aes/jpeg ×1.0).
+
+Weighting the workbook's five selected contributions (TNS, dynamic power, leakage power, capacitance and slew) across the 12 designs gives **1099.35** for OpenROAD Resizer. Summing all published contributions with the same design weights gives **1107.55**, matching the workbook total. The omitted **8.20** points come from fanout (3.20), maximum and total global-routing overflow (2.00 each), and average displacement (1.00). The two runtime columns contribute no points to this row. This reconciles the workbook's published contributions; it is not an independent rerun of the evaluator.
 
 ### ariane — the TNS term is saturated, the cap term decides
 
