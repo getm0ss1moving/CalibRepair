@@ -22,8 +22,7 @@ evaluator:
 
 ### 1. On the big design the TNS term saturates, so the ERC term decides
 
-The scoring model, reverse-engineered from the organisers' workbook and validated against the
-published reference row:
+The partial scoring model used for the analysis below is based on the organisers' workbook:
 
 ```
 contribution = w × (m − pre) / |pre|      # TNS
@@ -31,8 +30,7 @@ contribution = w × (pre − m) / |pre|      # penalties (cap, slew, ...)
 design_score = Σ contributions ;  total = Σ design_weight × design_score
 ```
 
-Reproducing the `OpenROAD Resizer` row with this model gives **1099.35** against the sheet's
-**1107.55** — the 8.2 gap is the runtime/displacement terms, which the analysis excludes.
+Weighting the workbook's five selected contributions (TNS, dynamic power, leakage power, capacitance and slew) across the 12 designs gives **1099.35** for OpenROAD Resizer. Summing all published contributions with the same design weights gives **1107.55**, matching the workbook total. The omitted **8.20** points come from fanout (3.20), maximum and total global-routing overflow (2.00 each), and average displacement (1.00). The two runtime columns contribute no points to this row. This reconciles the workbook's published contributions; it is not an independent rerun of the evaluator.
 
 Because the TNS term is normalised against `pre_opt`, its contribution units are enormous in
 nanoseconds — and **saturate**:
